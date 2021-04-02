@@ -175,7 +175,7 @@ char *get_v_dolar(char *v_dolar)
     t_env *tmp;
     t_var *v = get_struct_var(NULL);
 
-    // tmp = v->m_gl->envar;
+    tmp = v->m_gl->envar;
     // printf("||%s||\n", v_dolar);
     // while(tmp){
     //     printf("%s=%s\n",tmp->ident, tmp->value );

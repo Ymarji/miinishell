@@ -1,6 +1,6 @@
 NAME = minishell
 LIB = minishell.a
-MAIN = $(main)
+MAIN = minishell.c
 SRC =./exec/echo_main.c \
 	./exec/unset.c \
 	./exec/start.c \
