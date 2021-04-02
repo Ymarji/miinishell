@@ -6,7 +6,7 @@
 /*   By: ymarji <ymarji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:04:40 by ymarji            #+#    #+#             */
-/*   Updated: 2021/04/01 10:17:13 by ymarji           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:32:51 by ymarji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int check_opt_echo(char **tab)
 	int flag;
 
 	flag = 1;
-	while (tab[flag] && flag)
+	while (tab[flag])
 		if (tab[flag] && !ft_strncmp(tab[flag], "-n", ft_strlen(tab[flag])))
 			flag++;
 		else

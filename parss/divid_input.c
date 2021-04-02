@@ -175,7 +175,12 @@ char *get_v_dolar(char *v_dolar)
     t_env *tmp;
     t_var *v = get_struct_var(NULL);
 
-    tmp = v->envar;
+    // tmp = v->m_gl->envar;
+    // printf("||%s||\n", v_dolar);
+    // while(tmp){
+    //     printf("%s=%s\n",tmp->ident, tmp->value );
+    //     tmp = tmp->next;
+    // }
     while (tmp)
     {
         if (!strcmp(v_dolar, tmp->ident))
@@ -219,12 +224,12 @@ void dolar_hundle(int j, int *i)
     {
         v->tmp1 = ft_substr(v->sc_sp[j], 0, *i);
         v->tmp2 = ft_strjoin(v->tmp1, v_dolar);
-        free(v->tmp1);
-        v->tmp1 = NULL;
+        // free(v->tmp1);
+        // v->tmp1 = NULL;
         v->tmp3 = ft_strjoin(v->tmp2, &v->sc_sp[j][*i + 1 + k]);
-        free(v->tmp2);
+        // free(v->tmp2);
         v->sc_sp[j] = v->tmp3;
-        free(v->tmp1);
+        // free(v->tmp1);
         *i = *i - 1 + ft_strlen(v_dolar);
     }
     else
@@ -232,8 +237,8 @@ void dolar_hundle(int j, int *i)
         v->tmp1 = ft_substr(v->sc_sp[j], 0, *i);
         v->tmp2 = ft_strjoin(v->tmp1, &v->sc_sp[j][*i + ft_strlen(dolar) + 1]);
         v->sc_sp[j] = v->tmp2;
-        free(v->tmp1);
-        free(v->tmp2);
+        // free(v->tmp1);
+        // free(v->tmp2);
         *i -= 1;
     }
 }
@@ -339,7 +344,7 @@ void divid_input()
         hundle_input(i);
         v->node = NULL;
         stock_cmd(v->sc_sp[i]);
-
+        execute(v->m_gl, v->node);
         clear_lst_cmd_args();
         i++;
     }

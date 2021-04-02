@@ -50,7 +50,7 @@ void let_start()
     r = 1;
     while (r > 0)
     {
-        ft_putstr_fd("Minishell-> ", 1);
+        ft_putstr_fd("\033[0;31mminishell~> $ : \e[39m", 1);
         ft_initial();
         // var->input = ft_strdup("cd kj > \" hello ; ' \"");
         if ((r = get_next_line(0, &var->input)) == -1)
@@ -66,24 +66,24 @@ void let_start()
     }
 }
 
-void env_copy(t_var *v, char **env_t)
-{
-    t_env *tmp;
-    char **tab;
-    char c;
+// void env_copy(t_var *v, char **env_t)
+// {
+//     t_env *tmp;
+//     char **tab;
+//     char c;
 
-    v->envar = NULL;
-    while (*env_t)
-    {
-        c = 0;
-        tab = ft_split(*env_t++, '=');
-        if (tab[1])
-            c = '=';
-        tmp = ft_lstnew_m(ft_strdup(tab[0]), ft_strdup(tab[1] ? tab[1] : ""), c);
-        ft_lstadd_back_m(&(v->envar), tmp);
-        free_tab(tab);
-    }
-}
+//     v->envar = NULL;
+//     while (*env_t)
+//     {
+//         c = 0;
+//         tab = ft_split(*env_t++, '=');
+//         if (tab[1])
+//             c = '=';
+//         tmp = ft_lstnew_m(ft_strdup(tab[0]), ft_strdup(tab[1] ? tab[1] : ""), c);
+//         ft_lstadd_back_m(&(v->envar), tmp);
+//         free_tab(tab);
+//     }
+// }
 
 void free_tab(char **tab)
 {
@@ -105,9 +105,10 @@ int main(int ac, char **av, char **env)
 
     (void)ac;
     (void)av;
+    var.m_gl = (t_global *)malloc(sizeof(t_global));
     get_struct_var(&var);
-    env_copy(&var, env);
-    tmp = var.envar;
+    env_copy(var.m_gl, env);
+    // tmp = var.envar;
     // while(tmp)
     // {
     //     printf("|%s|%c|%s|\n", tmp->ident, tmp->equal, tmp->value);

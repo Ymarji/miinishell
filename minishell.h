@@ -6,7 +6,7 @@
 /*   By: ymarji <ymarji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:26:47 by ymarji            #+#    #+#             */
-/*   Updated: 2021/04/01 10:17:43 by ymarji           ###   ########.fr       */
+/*   Updated: 2021/04/02 14:28:12 by ymarji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ typedef struct s_node
 
 typedef struct s_var
 {
-    t_env   *envar;
+    // t_env   *envar;
+    t_global *m_gl;
 	char    *home;
     int     flag;
     int     flg_s_q;
@@ -92,6 +93,13 @@ typedef struct s_var
     t_node   *node;
 }               t_var;
 
+// void execute(t_global *m_gl, char *line);
+void execute(t_global *m_gl, t_node *node);
+void init(t_global *m_gl);
+void modify_path(t_env *env_l);
+void env_copy(t_global *m_gl, char **env_t);
+// int check_built(t_global *m_gl, char **cmd);
+int check_built(t_global *m_gl, t_node *node);
 int ft_strcmp(const char *s1, const char *s2);
 void	exec_main(t_global *m_gl, char	*line);
 void echo_main(t_global *m_gl, char **tab);

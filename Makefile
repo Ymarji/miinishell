@@ -3,6 +3,7 @@ LIB = minishell.a
 MAIN = $(main)
 SRC =./exec/echo_main.c \
 	./exec/unset.c \
+	./exec/start.c \
 	./exec/env_main.c \
 	./exec/exec_cmd.c \
 	./exec/export_main.c \
@@ -33,6 +34,7 @@ $(NAME) : $(OBJ)
 	ar rcs $(LIB) $(OBJ)
 	cd ./libft && make
 	gcc $(FLAGS) $(MAIN) $(LIB) $(LIBFT) -o $(NAME)
+	./minishell
 
 %.o: %.c
 	gcc $(FLAGS) -o $@ -c $<
